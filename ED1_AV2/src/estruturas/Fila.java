@@ -89,7 +89,7 @@ public class Fila<T> implements IFila, IFilaAvaliacao {
         }
 
         return true;
-    }
+    } //ok
 
     public Object get(int posicao) throws Exception {
         if (posicao > contadorNos - 1 || posicao < 0) {
