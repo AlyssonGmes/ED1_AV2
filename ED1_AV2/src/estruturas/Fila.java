@@ -1,10 +1,8 @@
 package estruturas;
-
 import exceptions.FilaCheiaException;
 import exceptions.FilaVaziaException;
 
 public class Fila<T> implements IFila, IFilaAvaliacao {
-
     No<T> noInicioLista;
     No<T> noFimLista;
     int contadorNos = 0;
@@ -115,5 +113,4 @@ public class Fila<T> implements IFila, IFilaAvaliacao {
             System.out.println(auxiliar.getDado());
         }
     } //ok
-
 }

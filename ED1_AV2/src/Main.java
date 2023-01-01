@@ -3,7 +3,6 @@ import estruturas.Pilha;
 import exceptions.FilaCheiaException;
 import exceptions.PilhaCheiaException;
 import exceptions.PilhaVaziaException;
-
 public class Main {
     public static void main(String[] args) throws Exception {
           testarPilha();

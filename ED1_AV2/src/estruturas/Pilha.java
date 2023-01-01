@@ -134,5 +134,4 @@ public class Pilha<T> {
             System.out.println("Expressão incorreta: " + expressao);
         }
     } // 2º versao, acrescentado 'válido' na condicional for
-
 }
