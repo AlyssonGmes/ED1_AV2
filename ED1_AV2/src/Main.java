@@ -6,8 +6,8 @@ import exceptions.PilhaVaziaException;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-         // testarPilha();
-        //  testarFila();
+          testarPilha();
+         // testarFila();
     }
 
     public static void testarFila() throws FilaCheiaException {

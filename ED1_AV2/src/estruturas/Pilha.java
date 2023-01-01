@@ -3,10 +3,6 @@ package estruturas;
 import exceptions.PilhaCheiaException;
 import exceptions.PilhaVaziaException;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Scanner;
-
 public class Pilha<T> {
     private T[] pilha;
     private int posAtual = -1;
@@ -87,7 +83,7 @@ public class Pilha<T> {
         String expressao = "";
         Character letra;
 
-        for (int i = 0; i < tamanhoMaximo; i++) {
+        for (int i = 0; i < tamanhoMaximo && valido; i++) {
             letra = (char) pilha[i];
             expressao += letra;
 
@@ -137,6 +133,6 @@ public class Pilha<T> {
         } else {
             System.out.println("Expressão incorreta: " + expressao);
         }
-    } // 1º versão ok
+    } // 2º versao, acrescentado 'válido' na condicional for
 
 }

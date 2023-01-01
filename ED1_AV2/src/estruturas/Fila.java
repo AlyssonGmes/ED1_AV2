@@ -2,7 +2,6 @@ package estruturas;
 
 import exceptions.FilaCheiaException;
 import exceptions.FilaVaziaException;
-import exceptions.PilhaVaziaException;
 
 public class Fila<T> implements IFila, IFilaAvaliacao {
 
