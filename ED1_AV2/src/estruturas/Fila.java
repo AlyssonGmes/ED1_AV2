@@ -86,7 +86,7 @@ public class Fila<T> implements IFila, IFilaAvaliacao {
             }
 
             for (int i = 0; i < qtd; i++) {
-                if (no1.getDado() == no2.getDado()) {
+                if (no1.getDado().equals(no2.getDado())) {
                     no1 = no1.getProximo();
                     no2 = no2.getProximo();
                 } else {
