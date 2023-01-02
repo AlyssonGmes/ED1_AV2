@@ -1,4 +1,5 @@
 package estruturas;
+
 import exceptions.FilaCheiaException;
 import exceptions.FilaVaziaException;
 
@@ -73,20 +74,29 @@ public class Fila<T> implements IFila, IFilaAvaliacao {
 
     @Override
     public boolean saoIguais(IFila fila1, IFila fila2) {
-        IFila temp1 = fila1, temp2 = fila2;
+        if (((Fila<?>) fila1).contadorNos != ((Fila<?>) fila2).contadorNos) {
+            return false;
+        } else {
+            int qtd = ((Fila<?>) fila1).contadorNos;
+            No<?> no1 = ((Fila<?>) fila1).noInicioLista;
+            No<?> no2 = ((Fila<?>) fila2).noInicioLista;
 
-        try {
-            do {
-                if (!(((No) temp1.remover()).getDado().equals(((No) temp2.remover()).getDado()))) {
+            if (qtd == 0) {
+                return true;
+            }
+
+            for (int i = 0; i < qtd; i++) {
+                if (no1.getDado() == no2.getDado()) {
+                    no1 = no1.getProximo();
+                    no2 = no2.getProximo();
+                } else {
                     return false;
                 }
-            } while (!(temp1.estaVazia() || temp2.estaVazia()));
-        } catch (FilaVaziaException e) {
-            return false;
+            }
         }
 
         return true;
-    } //ok
+    }
 
     public Object get(int posicao) throws Exception {
         if (posicao > contadorNos - 1 || posicao < 0) {

@@ -3,13 +3,52 @@ import estruturas.Pilha;
 import exceptions.FilaCheiaException;
 import exceptions.PilhaCheiaException;
 import exceptions.PilhaVaziaException;
+
 public class Main {
     public static void main(String[] args) throws Exception {
-          testarPilha();
-         // testarFila();
+        /*
+        Fila<Integer> f1 = new Fila<>(10);
+        f1.incluir(1);
+        f1.incluir(2);
+        f1.incluir(3);
+        f1.incluir(4);
+        f1.incluir(5);
+        f1.incluir(6);
+        f1.incluir(7);
+        f1.incluir(8);
+        f1.incluir(9);
+        f1.incluir(10);
+
+
+        Fila<Integer> f2 = new Fila<>(10);
+        f2.incluir(1);
+        f2.incluir(2);
+        f2.incluir(3);
+        f2.incluir(4);
+        f2.incluir(5);
+        f2.incluir(6);
+        f2.incluir(7);
+        f2.incluir(8);
+        f2.incluir(9);
+        f2.incluir(10);
+
+        System.out.println(f1.saoIguais(f1, f2));
+
+        f1.listar();
+        f2.listar();
+
+        Fila<Integer> fx = new Fila<>(1);
+        Fila<Integer> fy = new Fila<>(1);
+
+        System.out.println(fx.saoIguais(fx, fy));
+        */
+
+        // testarPilha();
+        testarFila();
     }
 
     public static void testarFila() throws FilaCheiaException {
+        System.out.println("Teste de fila");
         Fila<Integer> f1 = new Fila<>(10);
         f1.incluir(1);
         f1.incluir(2);
@@ -74,6 +113,7 @@ public class Main {
     }
 
     public static void testarPilha() throws PilhaCheiaException, PilhaVaziaException {
+        System.out.println("Teste de pilha");
         String expressao1 = "A + B ∗ C + D ∗ E";
         String expressao2 = "A + B + C";
         String expressao3 = "12 + [35 - (10 + 2) +2]";
