@@ -3,6 +3,8 @@ package estruturas;
 import exceptions.FilaCheiaException;
 import exceptions.FilaVaziaException;
 
+import java.util.Scanner;
+
 public class Fila<T> implements IFila, IFilaAvaliacao {
     No<T> noInicioLista;
     No<T> noFimLista;
@@ -14,6 +16,12 @@ public class Fila<T> implements IFila, IFilaAvaliacao {
         noFimLista = new No<>();
         tamanhoMax = tamanhoMaximo;
     } //ok
+
+    public Fila() {
+        noInicioLista = new No<>();
+        noFimLista = new No<>();
+        tamanhoMax = Integer.MAX_VALUE;
+    }
 
     public void incluir(Object valor) throws FilaCheiaException {
         if (tamanhoMax == contadorNos) {
@@ -33,17 +41,21 @@ public class Fila<T> implements IFila, IFilaAvaliacao {
         }
     } //ok
 
-    public Object remover() throws FilaVaziaException {
+    public T remover() throws FilaVaziaException {
         No<T> auxiliar = noInicioLista;
 
         if (estaVazia()) {
             throw new FilaVaziaException("A fila está vazia");
-        } else {
+        } else if(contadorNos == 1){
+            noInicioLista = new No<>();
+            noFimLista = new No<>();
+            contadorNos--;
+        }else {
             noInicioLista = noInicioLista.getProximo();
             contadorNos--;
         }
 
-        return auxiliar;
+        return auxiliar.getDado();
     } //ok
 
     public boolean estaVazia() {
@@ -74,28 +86,52 @@ public class Fila<T> implements IFila, IFilaAvaliacao {
 
     @Override
     public boolean saoIguais(IFila fila1, IFila fila2) {
-        if (((Fila<?>) fila1).contadorNos != ((Fila<?>) fila2).contadorNos) {
-            return false;
-        } else {
-            int qtd = ((Fila<?>) fila1).contadorNos;
-            No<?> no1 = ((Fila<?>) fila1).noInicioLista;
-            No<?> no2 = ((Fila<?>) fila2).noInicioLista;
+        //((Fila) fila1).listar(); - para verificar o estado inicial da fila
+        //((Fila) fila2).listar();
 
-            if (qtd == 0) {
-                return true;
-            }
+        IFila temp1 = new FilaIlimitada<>();
+        IFila temp2 = new FilaIlimitada<>();
 
-            for (int i = 0; i < qtd; i++) {
-                if (no1.getDado().equals(no2.getDado())) {
-                    no1 = no1.getProximo();
-                    no2 = no2.getProximo();
-                } else {
-                    return false;
+        Object a = null;
+        Object b = null;
+        boolean verificacao = true;
+
+        try {
+            while (!(fila1.estaVazia() && fila2.estaVazia())) {
+                if (!fila1.estaVazia()) {
+                    a = fila1.remover();
+                    temp1.incluir(a);
+                }
+
+                if (!fila2.estaVazia()) {
+                    b = fila2.remover();
+                    temp2.incluir(b);
+                }
+
+                if (!(a.equals(b))) {
+                    verificacao = false;
                 }
             }
+        } catch (FilaVaziaException | FilaCheiaException e) {
+            verificacao = false;
         }
 
-        return true;
+        try {
+            while (!temp1.estaVazia()) {
+                fila1.incluir(temp1.remover());
+            }
+
+            while (!temp2.estaVazia()) {
+                fila2.incluir(temp2.remover());
+            }
+
+        } catch (FilaVaziaException | FilaCheiaException e) {
+            //
+        }
+
+        //((Fila) fila1).listar(); - para verificar o estado final da fila
+       // ((Fila) fila2).listar();
+        return verificacao;
     }
 
     public Object get(int posicao) throws Exception {

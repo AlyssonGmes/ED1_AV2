@@ -43,7 +43,7 @@ public class Main {
         System.out.println(fx.saoIguais(fx, fy));
         */
 
-        // testarPilha();
+        //testarPilha();
         testarFila();
     }
 
@@ -97,7 +97,7 @@ public class Main {
         f4.incluir(9);
         f4.incluir(0);
 
-        Fila<Integer> f5 = new Fila<>(3);
+        Fila<Integer> f5 = new Fila<>(40);
         f5.incluir(1);
         f5.incluir(2);
         f5.incluir(3);
