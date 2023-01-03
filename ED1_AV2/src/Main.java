@@ -105,10 +105,13 @@ public class Main {
         Fila<Integer> f6 = new Fila<>(3);
 
         System.out.println("Deve dar true: " + f1.saoIguais(f1, f2));
+        System.out.println("Deve dar true: " + f1.saoIguais(f2, f1)+"\n");
 
         System.out.println("Deve dar false: " + f3.saoIguais(f3, f4));
+        System.out.println("Deve dar false: " + f3.saoIguais(f4, f3)+"\n");
 
         System.out.println("Deve dar false: " + f5.saoIguais(f5, f6));
+        System.out.println("Deve dar false: " + f5.saoIguais(f6, f5));
 
     }
 

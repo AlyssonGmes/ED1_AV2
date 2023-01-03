@@ -84,7 +84,6 @@ public class Fila<T> implements IFila, IFilaAvaliacao {
         return null;
     } //ok
 
-    @Override
     public boolean saoIguais(IFila fila1, IFila fila2) {
         //((Fila) fila1).listar(); - para verificar o estado inicial da fila
         //((Fila) fila2).listar();
@@ -108,8 +107,14 @@ public class Fila<T> implements IFila, IFilaAvaliacao {
                     temp2.incluir(b);
                 }
 
-                if (!(a.equals(b))) {
-                    verificacao = false;
+                if(a == null){
+                    if (b != null){
+                        verificacao = false;
+                    }
+                }else {
+                    if (!(a.equals(b))) {
+                        verificacao = false;
+                    }
                 }
             }
         } catch (FilaVaziaException | FilaCheiaException e) {
